@@ -1,2 +1,1 @@
-# zora-sound
-NFT Music Hub built on Zora Protocol
+# ZORA NFT Python SDK
