@@ -2,10 +2,10 @@
 
 This repository contains a tool for interacting with NFT metadata using ZORA Protocol in a decentralized and permissionless way. The aim of this tool is to ease exploration and analysis of on-chain data for Ethereum NFTs without the need of centralized entity or API limitations.
 
-* Get all tracked NFT collections in Ethereum.
-* Get NFT Collection information
-* Get all token and its metadata from a given NFT Collection.
-* Get transactions and activity from any NFT collection.
+* **Get all tracked NFT collections** in Ethereum.
+* **Get NFT Collection information**.
+* **Get all token and its metadata** from a given NFT Collection.
+* **Get transactions and activity** from any NFT collection.
 
 ## **Installation**
 
