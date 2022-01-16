@@ -54,6 +54,20 @@ items = nft.get_items()
 print(items[0])
 ```
 
+### Get all attributes from items in NFT Collection
+
+```python
+from zora import NFT
+
+address = "0x1A92f7381B9F03921564a437210bB9396471050C" # Cool Cats
+
+nft = NFT(address)
+
+# Get all attribute information from items in collection
+metadata = nft.get_metadata()
+print(metadata[0])
+```
+
 ### Get all transactions and volume from NFT Collection
 
 ```python

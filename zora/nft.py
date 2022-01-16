@@ -13,18 +13,49 @@ from zora.base import BaseToken
 
 
 class NFT(BaseToken):
+
+    """
+    Class for NFT interaction from Zora
+    """
+
     def __init__(self, address) -> None:
+
+        """
+        Initialize NFT Contract class from metadata
+
+        Args:
+            address (str): NFT contract address
+        """
 
         response = self._get_contract(address)
         response = response["data"]["TokenContract"][0]
+        # Dynamic attribute generation based on ZORA response
         for k, v in response.items():
             setattr(self, k, v)
 
     def _get_contract(self, address):
+
+        """
+        Get NFT Contract metadata from ZORA
+
+        Args:
+            address (str): NFT contract address
+
+        Returns:
+            dict: dict with response from ZORA
+        """
         variables = {"address": address}
         return run_zora_query(CONTRACT_QUERY, variables)
 
     def get_items(self):
+
+        """
+        Get all NFT collection items and metadata
+
+        Returns:
+            List[Token]: list of Token objects with items metadata
+        """
+
         variables = {"address": self.address}
         response = run_zora_query(TOKEN_QUERY, variables)
         result = []
@@ -33,6 +64,13 @@ class NFT(BaseToken):
         return result
 
     def get_metadata(self):
+
+        """
+        Get all metadata from items in NFT Collection
+
+        Returns:
+            List[Metadata]: list of Metadata objects
+        """
         variables = {"address": self.address}
         response = run_zora_query(METADATA_QUERY, variables)
         result = []
@@ -41,6 +79,13 @@ class NFT(BaseToken):
         return result
 
     def get_transfers(self):
+
+        """
+        Get all NFT Collection transactions
+
+        Returns:
+            List[str]: list with transaction hashes from collection
+        """
 
         variables = {"address": self.address}
         response = run_zora_query(TOKEN_TRANSFERS_QUERY, variables)
@@ -52,7 +97,19 @@ class NFT(BaseToken):
         return result
 
     async def _get_transaction(self, transactions):
+
+        """
+        Get all transaction information from ZORA
+        """
+
         async def get_tx(session, query, variables=None):
+
+            """
+            Get transaction information given transaction hash
+
+            Returns:
+                dict: response from ZORA request
+            """
 
             body = {"query": query}
             if variables is not None:
@@ -85,6 +142,16 @@ class NFT(BaseToken):
 
     def get_volume(self, transactions=None):
 
+        """
+        Calculate transfered ETH volume from the collection
+
+        Args:
+            transactions (List[str], optional): List of transactions. Defaults to None.
+
+        Returns:
+            float: ETH transferred volume
+        """
+
         volume = 0
 
         if not transactions:
@@ -96,12 +163,22 @@ class NFT(BaseToken):
 
 
 class Meatadata(BaseToken):
+
+    """
+    Class for Token metadata
+    """
+
     def __init__(self, token):
         for k, v in token.items():
             setattr(self, k, v)
 
 
 class Token(BaseToken):
+
+    """
+    Class for Token information
+    """
+
     def __init__(self, token):
         for k, v in token.items():
             setattr(self, k, v)
