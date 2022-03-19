@@ -23,4 +23,3 @@ jobs:
         with:
           project-name: zora
           pypi-token: ${{ secrets.PYPI_TOKEN }}
-          pyproject-folder: ./py-zora
