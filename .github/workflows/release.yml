@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  release-dogfood-to-pypi:
+  release-to-pypi:
     runs-on: ubuntu-20.04
 
     steps:

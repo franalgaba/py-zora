@@ -1,4 +1,3 @@
-from pytest import param
 import requests
 
 from zora.core.constants import V3_ENDPOINT
