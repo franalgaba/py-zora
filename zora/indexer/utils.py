@@ -1,5 +1,7 @@
 import requests
 
+from zora.core.constants import INDEXER_ENDPOINT
+
 
 def run_zora_query(query, variables=None):
 
@@ -10,14 +12,12 @@ def run_zora_query(query, variables=None):
         dict: json response from ZORA
     """
 
-    endpoint = "https://indexer-prod-mainnet.ZORA.co/v1/graphql"
-
     body = {"query": query}
 
     if variables is not None:
         body["variables"] = variables
 
     response = requests.post(
-        endpoint, json=body, headers={"X-Hasura-Role": "anonymous"}
+        INDEXER_ENDPOINT, json=body, headers={"X-Hasura-Role": "anonymous"}
     )
     return response.json()

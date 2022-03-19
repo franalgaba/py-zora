@@ -1,15 +1,15 @@
 import asyncio
 import aiohttp
 
-from zora.utils import run_zora_query
-from zora.queries import (
+from zora.indexer.utils import run_zora_query
+from zora.indexer.queries import (
     TOKEN_QUERY,
     CONTRACT_QUERY,
     METADATA_QUERY,
     TOKEN_TRANSFERS_QUERY,
     TRANSACTION_QUERY,
 )
-from zora.base import BaseToken
+from zora.indexer.base import BaseToken
 
 
 class NFT(BaseToken):

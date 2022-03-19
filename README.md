@@ -7,13 +7,15 @@ This repository contains a tool for interacting with NFT metadata using ZORA Pro
 * **Get all token and its metadata** from a given NFT Collection.
 * **Get transactions and activity** from any NFT collection.
 
+**ZORA V3 Community API** inital integration for `collections`, `tokens` and `sales`. For every supported entity there is filtering based on `pagination`, `query`, `sort` and `filter`. See [reference](#zora-v3-community-api-usage) for installation and usage details.
+
 ## **Installation**
 
 `pip install zora`
 
 ## **Usage**
 
-### **List all NFT collections**
+### List all NFT collections
 
 ```python
 from zora import list_nft
@@ -87,3 +89,45 @@ volume = nft.get_volume(transfers)
 print(volume)
 ```
 
+## **ZORA V3 Community API Usage**
+
+The usage of the Community API integration has support for the main entities implemented by ZORA Protocol in their [API documentation](https://ourzora.notion.site/Zora-Community-API-Testing-e68aae68838c4b878d7b1dab4e6e697b)
+
+### **Installation**
+
+`pip install zora`
+
+### **Usage**
+
+#### Query Collections Entity
+
+Using the `collections` entity you can retrieve information about supported NFT collections.
+
+```python
+from zora import query_collections
+
+# Response returns a DataFrame
+collections_df = query_collections(pagination_limit=2, sort_key="CREATED", sort_direction="ASC")
+```
+
+#### Query Tokens
+
+Using the `tokens` entity you can retrieve information about tokens in a certain `collection`.
+
+```python
+from zora import query_tokens
+
+# Response returns a DataFrame
+tokens_df = query_tokens(pagination_limit=5, sort_key="MINTED", sort_direction="ASC")
+```
+
+#### Query Sales
+
+Using the `sales` entity you cand retrieve all the sale information about a specific `collection`.
+
+```python
+from zora import query_sales
+
+# Response returns a DataFrame
+sales_df = query_sales(pagination_limit=10, sort_key="ETH_PRICE", sort_direction="ASC", query_collection="0xabefbc9fd2f806065b4f3c237d4b59d9a97bcac7")
+```

@@ -1,0 +1,5 @@
+ - name: Publish to pypi
+    uses: coveooss/pypi-publish-with-poetry@v1.0.0
+    with:
+      project-name: zora
+      pypi-token: ${{ secrets.PYPI_TOKEN }}

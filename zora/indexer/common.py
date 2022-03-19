@@ -1,14 +1,12 @@
-from zora.queries import LIST_NFT_QUERY
-from zora.utils import run_zora_query
-from zora.nft import NFT
+from zora.indexer.queries import LIST_NFT_QUERY
+from zora.indexer.utils import run_zora_query
+from zora.indexer.nft import NFT
 
 
 def list_nft():
 
     """
-
     List all NFT Collections tracked by ZORA
-
     Returns:
         List[NFT]: list of NFT Objects
     """
